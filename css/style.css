@@ -383,6 +383,13 @@ span.cd {
   /*font-style: normal;*/
   font-weight: 600;
 }
+
+.highlight {
+  /*font-style: normal;*/
+  color: red;
+  font-weight: 600;
+}
+
 span.tag{
   padding-right:1px;
 }
