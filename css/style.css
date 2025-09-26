@@ -294,6 +294,17 @@ hr {
 --- About
 ============================ */
 
+.affiliation {
+  /* font-size: 20px; */
+  font-weight: 600;
+}
+
+.email {
+  /* font-size: 20px; */
+  /* font-weight: 600; */
+  font-family: 'Courier New', Courier, monospace;
+}
+
 .down-cv {
   font-family: Georgia, arial, sans-serif;
   font-style: italic;
