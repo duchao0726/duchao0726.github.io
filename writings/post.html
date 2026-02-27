@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chao Du">
+  <title>Writing · Chao Du</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/favicons/favicon-16x16.png">
+  <link rel="shortcut icon" href="../images/favicons/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- KaTeX (must be non-deferred so renderToString is available synchronously) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+
+  <!-- marked.js for Markdown -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+
+  <link href="../css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-name" href="../index.html">Chao Du</a>
+      <ul class="nav-links">
+        <li><a href="../writings.html" class="nav-active">Writings</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <article>
+      <header class="article-header">
+        <div class="article-back"><a href="../writings.html">← Writings</a></div>
+        <h1 class="article-title" id="article-title"></h1>
+        <div class="article-meta" id="article-meta"></div>
+      </header>
+      <div class="article-body" id="article-body"></div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-inner" id="article-footer"></div>
+  </footer>
+
+  <script>
+    // --- Front matter parser ---
+    function parseFrontMatter(text) {
+      const match = text.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+      if (!match) return { meta: {}, content: text };
+      const meta = {};
+      match[1].split('\n').forEach(line => {
+        const colon = line.indexOf(':');
+        if (colon !== -1) {
+          const key = line.slice(0, colon).trim();
+          const val = line.slice(colon + 1).trim();
+          meta[key] = val;
+        }
+      });
+      return { meta, content: match[2] };
+    }
+
+    // --- Math protection: extract math before Markdown parsing ---
+    // Prevents marked.js from mangling LaTeX (underscores, asterisks, etc.)
+    const PLACEHOLDER = '\x00MATH';
+    const PLACEHOLDER_END = '\x00';
+
+    function extractMath(content) {
+      const blocks = [];
+
+      // Display math: $$...$$
+      content = content.replace(/\$\$([\s\S]*?)\$\$/g, (_, math) => {
+        blocks.push({ display: true, math });
+        return PLACEHOLDER + (blocks.length - 1) + PLACEHOLDER_END;
+      });
+
+      // Inline math: $...$  (not preceded or followed by $)
+      content = content.replace(/(?<!\$)\$(?!\$)((?:[^$\n]|\\.)+?)\$(?!\$)/g, (_, math) => {
+        blocks.push({ display: false, math });
+        return PLACEHOLDER + (blocks.length - 1) + PLACEHOLDER_END;
+      });
+
+      return { content, blocks };
+    }
+
+    function restoreMath(html, blocks) {
+      // Placeholders may have been wrapped in <p> or other tags by marked;
+      // use a global replace to find them wherever they ended up.
+      const re = new RegExp(
+        PLACEHOLDER.replace('\x00', '\\x00') + '(\\d+)' + PLACEHOLDER_END.replace('\x00', '\\x00'),
+        'g'
+      );
+      return html.replace(re, (_, i) => {
+        const { display, math } = blocks[parseInt(i)];
+        try {
+          return katex.renderToString(math, { displayMode: display, throwOnError: false });
+        } catch (e) {
+          return `<code>${math}</code>`;
+        }
+      });
+    }
+
+    // --- Main loader ---
+    async function loadPost() {
+      const params = new URLSearchParams(window.location.search);
+      const src = params.get('src');
+      if (!src) {
+        document.getElementById('article-body').innerHTML = '<p>No post specified.</p>';
+        return;
+      }
+
+      try {
+        const res = await fetch(src + '.md');
+        if (!res.ok) throw new Error('Not found');
+        const raw = await res.text();
+
+        const { meta, content } = parseFrontMatter(raw);
+        const { content: safeContent, blocks } = extractMath(content);
+
+        marked.setOptions({ breaks: false, gfm: true });
+        let html = marked.parse(safeContent);
+        html = restoreMath(html, blocks);
+
+        document.title = (meta.title || 'Writing') + ' · Chao Du';
+        document.getElementById('article-title').textContent = meta.title || '';
+        document.getElementById('article-meta').textContent = meta.date || '';
+        document.getElementById('article-body').innerHTML = html;
+        document.getElementById('article-footer').textContent = meta.date ? 'Written ' + meta.date : '';
+      } catch (e) {
+        document.getElementById('article-body').innerHTML = '<p>Post not found.</p>';
+      }
+    }
+
+    loadPost();
+  </script>
+
+</body>
+
+</html>
