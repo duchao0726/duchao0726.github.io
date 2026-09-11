@@ -12,7 +12,7 @@
   --accent-border: #d4cfc6;
   --text: #1a1a1a;
   --muted: #555;
-  --subtle: #888;
+  --subtle: #6f6f6f;
   --border: #ddd;
   --bg: #f5f4f0;
   --max-w: 780px;
@@ -167,6 +167,10 @@ section:last-child {
   color: var(--subtle);
   font-family: 'SF Mono', 'Consolas', 'Courier New', monospace;
   margin-bottom: 16px;
+}
+
+.about-info .email span {
+  white-space: nowrap;
 }
 
 .about-links {
@@ -541,7 +545,7 @@ footer {
   margin: 0 auto;
   padding: 20px 24px;
   font-size: 12px;
-  color: #bbb;
+  color: var(--subtle);
 }
 
 /* Responsive */
