@@ -227,6 +227,10 @@ section:last-child {
   font-weight: 600;
 }
 
+.hiring-note strong {
+  font-weight: 600;
+}
+
 /* Publications */
 .pub-area {
   font-size: 11px;
