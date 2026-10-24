@@ -15,7 +15,10 @@
   --subtle: #6f6f6f;
   --border: #ddd;
   --bg: #f5f4f0;
-  --max-w: 780px;
+  --link-underline: #a7a39b;
+  --tsinghua-purple: #660874;
+  --anchor-highlight: color-mix(in srgb, var(--tsinghua-purple) 8%, var(--bg));
+  --max-w: 768px; /* 720px of content plus 24px gutters on each side */
 }
 
 /* Base */
@@ -35,16 +38,16 @@ body {
 a {
   color: var(--text);
   text-decoration: none;
+  text-underline-offset: 2px;
   transition: text-decoration-color 0.15s ease;
 }
 
 a:hover {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration-line: underline;
 }
 
 /* Navigation */
-nav {
+.site-nav {
   position: sticky;
   top: 0;
   z-index: 100;
@@ -77,7 +80,6 @@ nav {
 
 .nav-links {
   display: flex;
-  gap: 28px;
   list-style: none;
 }
 
@@ -203,10 +205,6 @@ section:last-child {
   font-size: 15px;
 }
 
-.about-bio p:last-child {
-  margin-bottom: 0;
-}
-
 .about-bio a {
   font-weight: 500;
 }
@@ -221,10 +219,6 @@ section:last-child {
   font-size: 14px;
   color: var(--muted);
   line-height: 1.6;
-}
-
-.hiring-note a {
-  font-weight: 600;
 }
 
 .hiring-note strong {
@@ -285,11 +279,6 @@ section:last-child {
 
 .pub-venue .venue-name {
   font-weight: 600;
-}
-
-.pub-venue .preprint {
-  color: var(--subtle);
-  font-style: italic;
 }
 
 .pub-tags {
@@ -378,6 +367,79 @@ section:last-child {
   margin-top: 3px;
 }
 
+/* Shared disclosure marker for Contents and Appendix. */
+.article-toc > summary,
+.article-body .article-appendix > summary {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+}
+
+.article-toc > summary::marker,
+.article-body .article-appendix > summary::marker {
+  content: "";
+}
+
+.article-toc > summary::-webkit-details-marker,
+.article-body .article-appendix > summary::-webkit-details-marker {
+  display: none;
+}
+
+.article-toc > summary::before,
+.article-body .article-appendix > summary::before {
+  content: "";
+  flex: 0 0 12px;
+  height: 12px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M4 2.5 8 6 4 9.5Z' fill='none' stroke='white' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M4 2.5 8 6 4 9.5Z' fill='none' stroke='white' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.article-toc[open] > summary::before,
+.article-body .article-appendix[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+/* Article contents navigation */
+.article-toc {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.article-toc .toc-title { display: none; }
+.article-toc nav { margin-top: 10px; }
+.article-toc ul { list-style: none; padding: 0; margin: 0; }
+.article-toc li { margin: 0 0 8px; }
+.article-toc a {
+  display: block;
+  padding: 4px 0;
+  font-weight: 400;
+  color: var(--subtle);
+  text-decoration: none;
+}
+.article-toc a:hover { color: var(--text); text-decoration: none; }
+.article-toc a[aria-current="location"] {
+  color: var(--text);
+}
+.article-toc a:focus-visible { outline: 1px solid var(--tsinghua-purple); outline-offset: 2px; }
+@media (min-width: 1280px) {
+  .article-toc {
+    position: fixed;
+    top: 120px;
+    /* Keep 64–96px clear of the centered 720px article column. */
+    left: max(24px, calc(50vw - 696px));
+    width: min(240px, calc(50vw - 448px));
+    max-height: calc(100vh - 144px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    margin: 0;
+  }
+  .article-toc > summary { display: none; }
+  .article-toc .toc-title { display: block; font-size: 12px; font-weight: 600; color: var(--subtle); }
+}
 /* Article page */
 .article-header {
   padding: 56px 0 40px;
@@ -407,45 +469,260 @@ section:last-child {
 
 .article-body {
   padding-bottom: 64px;
-  max-width: 680px;
+  line-height: 1.7;
+  color: #333;
 }
 
 .article-body p {
-  color: var(--muted);
-  margin-bottom: 1.3em;
+  margin-bottom: 1.15em;
+}
+
+.article-body strong {
+  font-weight: 600;
+}
+
+/* Underline all article text links except equation references and citation numbers. */
+.article-body :where(a:not(.eq-ref, .citation-group a, .reference-list a)),
+.reference-list a {
+  text-decoration-line: underline;
+  text-decoration-color: var(--link-underline);
+}
+
+.article-body :where(a:not(.eq-ref, .citation-group a, .reference-list a)) {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-skip-ink: auto;
+}
+
+.article-body :where(a:not(.eq-ref, .citation-group a, .reference-list a)):hover,
+.article-body :where(a:not(.eq-ref, .citation-group a, .reference-list a)):focus-visible {
+  text-decoration-color: currentColor;
+}
+
+/* Keep personal notes distinct without turning them into cards. */
+.article-body .author-note {
+  font-size: 14px;
+}
+
+.article-body .author-note-block {
+  margin: 1.6em 0;
+}
+
+.article-body .author-note-block.author-preface {
+  margin-top: 0;
+  padding-bottom: 1.2em;
+  border-bottom: 1px solid var(--border);
+}
+
+.article-body .author-note-block:not(.author-preface) {
+  padding-top: 1.2em;
+  border-top: 1px solid var(--border);
+}
+
+.article-body .author-note-block > p:last-child {
+  margin-bottom: 0;
 }
 
 .article-body h2 {
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 600;
+  line-height: 1.4;
   color: var(--text);
-  margin: 2.2em 0 0.7em;
+  margin: 2em 0 0.65em;
 }
 
 .article-body h3 {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
+  line-height: 1.45;
   color: var(--text);
-  margin: 1.8em 0 0.5em;
+  margin: 1.6em 0 0.5em;
 }
 
-/* KaTeX display math block spacing */
-.article-body .katex-display {
-  margin: 1.4em 0;
-  overflow-x: visible;
+.article-body [id] {
+  scroll-margin-top: 90px;
 }
 
-/* Wrapper for genuinely wide equations — add class="eq-scroll" in HTML if needed */
-.article-body .eq-scroll {
+/* A single disclosure preserves the appendix's internal reading order. */
+.article-body .article-appendix {
+  margin: 2.5em 0 0;
+}
+
+.article-body .article-appendix > summary {
+  font-size: 19px;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.article-body .article-appendix > summary::before {
+  color: var(--subtle);
+}
+
+.article-body .article-appendix > summary:hover::before {
+  color: var(--text);
+}
+
+.article-body .article-appendix > summary h2 {
+  flex: 1;
+  margin: 0;
+}
+
+.article-body .article-appendix > summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+
+.article-body .appendix-content {
+  margin-top: 0.8em;
+}
+
+.article-body .baseline-placement-figure {
+  margin: 1em 0;
+  padding: 9px;
+  container-type: inline-size;
+}
+
+.article-body .baseline-placement-figure img {
+  width: 100%;
+  min-width: 640px;
+  margin: 0;
+}
+
+.article-body .figure-scroll {
   overflow-x: auto;
+  direction: rtl; /* Start at the reward end of the backward-flow diagram. */
+  scrollbar-width: thin;
+}
+
+.article-body .figure-scroll:focus-visible {
+  outline: 1px solid var(--accent-border);
+  outline-offset: 3px;
+}
+
+.article-body .baseline-placement-figure .figure-scroll-hint {
+  display: none;
+  margin: 0.5em 0 0;
+  font-size: 12px;
+  font-style: normal;
+  text-align: center;
+}
+
+.article-body .eq-ref { white-space: nowrap; color: inherit; }
+.article-body .math-with-punctuation { white-space: nowrap; }
+.article-body .eq-ref:hover { text-decoration: none; box-shadow: 0 1px currentColor; }
+.equation-anchor { display: block; }
+.article-body :is(.equation-anchor, .eq-scroll[id], .reference-list li) {
+  border-radius: 4px;
+  transition: background-color 0.8s ease-out, box-shadow 0.8s ease-out;
+}
+
+.article-body :is(h2, h3, strong) > [id] {
+  border-radius: 3px;
+  box-shadow: 0 0 0 0.12em transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-color 0.8s ease-out, box-shadow 0.8s ease-out;
+}
+
+.article-body :is(.equation-anchor, .eq-scroll[id], .reference-list li).anchor-target,
+.article-body :is(h2, h3, strong) > [id].anchor-target {
+  background-color: var(--anchor-highlight);
+  transition: none;
+}
+
+.article-body .reference-list li.anchor-target {
+  box-shadow: 0 0 0 4px var(--anchor-highlight);
+}
+
+.article-body :is(h2, h3, strong) > [id].anchor-target {
+  box-shadow: 0 0 0 0.12em var(--anchor-highlight);
+}
+
+.citation-group { font-style: normal; font-size: 0.72em; vertical-align: super; line-height: 0; white-space: nowrap; }
+.citation-group a { color: inherit; text-decoration-line: none; text-underline-offset: 3px; }
+.citation-group a:hover,
+.citation-group a:focus-visible { text-decoration-line: underline; }
+.article-body .reference-list { font-size: 13px; line-height: 1.6; }
+.article-body .reference-list li { padding-left: 3px; margin-bottom: 0.65em; }
+.reference-list a { text-underline-offset: 2px; }
+
+/* KaTeX display math: wide equations scroll inside their own box instead of the page */
+.article-body .katex-display {
+  margin: 0;
+  padding: 0.15em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+@media screen and (max-width: 580px) {
+  /* Reserve room only for numbered displays; the tag scrolls with the formula. */
+  .article-body .katex-display > .katex > .katex-html:has(> .tag) {
+    width: max-content;
+    min-width: 100%;
+    padding-right: 3em;
+  }
+}
+@container (width < 640px) {
+  .article-body .baseline-placement-figure .figure-scroll-hint {
+    display: block;
+  }
+}
+
+/* Give each standalone equation one spacing container, without paragraph margins inside it. */
+.article-body p:where(:has(> .katex-display:only-child), :has(> .equation-anchor:only-child)) {
+  margin: 1em 0;
+}
+
+/* Equation wrapper spacing; the inner KaTeX block handles scrolling. */
+.article-body .eq-scroll {
+  margin: 1em 0;
+}
+
+.article-body .eq-scroll > p {
+  margin: 0;
+}
+
+/* Independent formulas wrap between complete parts, keeping one number per group. */
+.article-body .equation-group {
+  position: relative;
+  margin: 1em 0;
+  padding: 0.15em 0;
+}
+
+.article-body .equation-parts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65em 1em;
+}
+
+.article-body .equation-part {
+  min-width: 0;
+  max-width: 100%;
+  padding: 0.15em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.article-body .equation-group-numbered {
+  padding-inline: 2em;
+}
+
+.article-body .equation-number {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  white-space: nowrap;
 }
 
 /* Markdown-generated elements inside article body */
 .article-body ul,
 .article-body ol {
   padding-left: 1.5em;
-  margin-bottom: 1.3em;
-  color: var(--muted);
+  margin-bottom: 1.15em;
 }
 
 .article-body li {
@@ -484,6 +761,28 @@ section:last-child {
   padding: 4px 20px;
   color: var(--subtle);
   font-style: italic;
+}
+
+.article-body .intuition-box {
+  margin: 1.6em 0;
+  padding: 18px 22px;
+  border: 1px solid var(--accent-border);
+  border-left-width: 3px;
+  border-radius: 6px;
+  background: var(--accent-light);
+}
+
+.article-body .intuition-title {
+  margin-bottom: 0.55em;
+  color: var(--text);
+}
+
+.article-body .intuition-box > p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 480px) {
+  .article-body .intuition-box { padding: 16px; }
 }
 
 .article-body img {
@@ -554,18 +853,37 @@ footer {
 
 /* Responsive */
 @media (max-width: 580px) {
+  .writing-item,
+  .service-list li {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .article-header {
+    padding: 32px 0 24px;
+    margin-bottom: 28px;
+  }
+
+  .article-back {
+    margin-bottom: 16px;
+  }
+
   .about-header {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
 
-  .about-links {
-    justify-content: center;
+  .about-info .email span {
+    display: block;
   }
 
-  .nav-links {
-    gap: 16px;
+  .about-info .email .email-separator {
+    display: none;
+  }
+
+  .about-links {
+    justify-content: center;
   }
 
   .pub-item {
@@ -575,11 +893,41 @@ footer {
 }
 
 @media (max-width: 400px) {
-  .nav-links {
-    gap: 12px;
-  }
-
   .nav-links a {
     font-size: 13px;
+  }
+}
+
+/* Reduced motion and printing */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .article-body :is(.equation-anchor, .eq-scroll[id], .reference-list li),
+  .article-body :is(h2, h3, strong) > [id] {
+    transition: none;
+  }
+}
+
+@media print {
+  .article-toc { display: none; }
+
+  .article-body .article-appendix > summary {
+    cursor: default;
+  }
+
+  .article-body .article-appendix > summary::before {
+    display: none;
+  }
+
+  .article-body .figure-scroll {
+    overflow: visible;
+  }
+
+  .article-body .baseline-placement-figure img {
+    min-width: 0;
+  }
+
+  .article-body .baseline-placement-figure .figure-scroll-hint {
+    display: none;
   }
 }

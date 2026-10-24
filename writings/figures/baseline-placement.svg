@@ -1,0 +1,348 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="535" viewBox="0 0 1600 535" role="img" aria-labelledby="title desc">
+  <title id="title">Shared baselines along a backward token-level signal path</title>
+  <desc id="desc">Two successful rollouts each have reward one. Subtracting the same terminal baseline, .5, gives .5. Multiplying by final-token ratios 2 and .2 gives incoming values 1.0 and .1. Subtracting the same baseline .2 at the previous position gives advantages positive .8 and negative .1. A further ratio multiplication and baseline subtraction continue at token L minus 2. Every multiplication and subtraction has the same circular operation symbol. Shared baselines connect to both rollout rows. The illustrative baselines are not estimated from the displayed samples.</desc>
+  <defs>
+    <marker id="flow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="9" markerHeight="9" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1 L7 4 L1 7" fill="none" stroke="#63747b" stroke-width="1.2" stroke-linejoin="round" />
+    </marker>
+    <marker id="guide" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1 L7 4 L1 7" fill="none" stroke="#a6b3b9" stroke-width="1.2" stroke-linejoin="round" />
+    </marker>
+    <path id="label-text-411" d="M98 1322V1490H1224V1322H757V0H567V1322Z" />
+    <path id="label-text-790" d="M613 -24Q461 -24 346.5 48Q232 120 168 250Q104 380 104 552Q104 727 168 857.5Q232 988 346.5 1060Q461 1132 613 1132Q766 1132 881 1060Q996 988 1060 857.5Q1124 727 1124 552Q1124 380 1060 250Q996 120 881 48Q766 -24 613 -24ZM613 137Q726 137 799 195Q872 253 907 347.5Q942 442 942 552Q942 663 907 758.5Q872 854 799 912.5Q726 971 613 971Q501 971 429 912.5Q357 854 322 759Q287 664 287 552Q287 442 322 347.5Q357 253 429 195Q501 137 613 137Z" />
+    <path id="label-text-727" d="M327 402V625H360L838 1118H1061L544 587H524ZM158 0V1490H338V0ZM865 0 437 547 565 674 1096 0Z" />
+    <path id="label-text-614" d="M628 -24Q466 -24 348.5 48Q231 120 167.5 249Q104 378 104 550Q104 722 166 853Q228 984 341.5 1058Q455 1132 607 1132Q696 1132 782.5 1102.5Q869 1073 939.5 1007.5Q1010 942 1052 835Q1094 728 1094 573V498H226V650H997L913 594Q913 704 878.5 789.5Q844 875 776 923.5Q708 972 607 972Q506 972 434 922.5Q362 873 324 793.5Q286 714 286 623V522Q286 398 329 311.5Q372 225 449.5 180.5Q527 136 629 136Q695 136 749 155Q803 174 842 212.5Q881 251 902 308L1076 260Q1050 176 988 112Q926 48 834.5 12Q743 -24 628 -24Z" />
+    <path id="label-text-773" d="M338 670V0H158V1118H331L332 847H307Q358 1002 452.5 1067Q547 1132 674 1132Q787 1132 872 1085.5Q957 1039 1004.5 945.5Q1052 852 1052 710V0H872V695Q872 824 804.5 897Q737 970 620 970Q540 970 476 935Q412 900 375 833Q338 766 338 670Z" />
+    <path id="label-text-871" d="M538 -24Q423 -24 333.5 9.5Q244 43 186 109Q128 175 108 271L279 312Q303 220 369.5 177Q436 134 536 134Q653 134 722.5 184Q792 234 792 303Q792 361 751.5 399.5Q711 438 628 457L442 501Q290 537 216 612.5Q142 688 142 806Q142 902 196 975.5Q250 1049 343.5 1090.5Q437 1132 556 1132Q671 1132 751.5 1097.5Q832 1063 882.5 1002.5Q933 942 958 863L795 821Q772 881 718.5 930Q665 979 557 979Q457 979 390.5 933Q324 887 324 817Q324 755 369 717.5Q414 680 512 657L681 617Q833 581 906 505.5Q979 430 979 315Q979 217 923.5 140.5Q868 64 768.5 20Q669 -24 538 -24Z" />
+    <path id="label-math-64" d="M462 431Q476 431 486 423.5Q496 416 496 403Q496 390 447 193Q398 -4 391 -23Q375 -72 339.5 -113.5Q304 -155 257 -179Q203 -205 156 -205Q80 -205 53 -157Q43 -143 43 -117Q43 -83 62 -64Q83 -45 106 -45Q150 -45 150 -87Q150 -124 115 -141Q113 -142 110 -143.5Q107 -145 105 -146Q103 -147 102 -147L99 -148Q102 -154 120 -161Q136 -167 152 -167H160Q177 -167 186 -165Q224 -154 258 -114Q292 -74 310 -18Q321 15 321 21Q321 22 319 20.5Q317 19 313 16Q276 -11 231 -11Q180 -11 147 13Q114 37 104 82Q103 89 103 113Q103 137 105 150Q112 193 151 297Q173 356 173 379Q173 393 170.5 398.5Q168 404 159 404H154Q131 404 110 383Q78 351 61 287Q61 286 60 283.5Q59 281 58.5 280.5Q58 280 57 279Q56 278 53.5 278Q51 278 49 278Q47 278 41 278H27Q19 286 24 301Q45 371 87 410Q121 442 158 442Q200 442 225 419Q250 396 250 355Q248 336 247 334Q247 328 232 291Q191 180 183 128Q182 120 182 105Q182 67 194 47Q206 27 238 27Q261 27 281.5 39Q302 51 312.5 62.5Q323 74 339 94Q339 95 357.5 169.5Q376 244 396 321Q416 398 419 404Q432 431 462 431Z" />
+    <path id="label-math-25" d="M285 628Q285 629 284 630.5Q283 632 281 632.5Q279 633 277 634Q275 635 271 635.5Q267 636 264 636Q261 636 256 636Q251 636 247.5 636.5Q244 637 238 637Q232 637 228 637Q204 637 199 638Q194 639 192 644Q190 647 193 662Q198 681 202 682Q205 683 217 683Q271 680 344 680Q358 680 384 680.5Q410 681 422 681Q437 681 458.5 681.5Q480 682 491.5 682.5Q503 683 506 683H518Q524 677 524.5 674.5Q525 672 522 656Q518 642 513 637H475Q406 636 394 628Q387 624 380 599.5Q373 575 313 336Q297 271 279 197.5Q261 124 252 88L243 52Q243 48 252 47.5Q261 47 311 46Q386 46 417.5 51Q449 56 487 78Q527 101 551.5 139.5Q576 178 600 242Q607 262 611 270Q616 273 628 273H641Q647 264 647 262Q647 260 626.5 203Q606 146 583 82.5Q560 19 557 9Q554 3 552 2Q549 0 294 0Q39 0 36 2Q29 6 34 24Q34 25 35 28Q40 44 46 45Q49 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339Q285 613 285 628Z" />
+    <path id="label-roman-193" d="M98 270H679Q694 262 694 250Q694 238 679 230H98Q84 237 84 250Q84 263 98 270Z" />
+    <path id="label-roman-21" d="M110 429Q82 429 66 447Q50 465 50 491Q50 563 104.5 614.5Q159 666 235 666Q321 666 377.5 619.5Q434 573 447 498Q449 480 449 465Q449 407 414 356Q386 314 301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q389 98 395 118Q399 129 409 186V189H449V186L421 3V0H50V19Q50 39 52 42Q53 44 136 137Q245 258 276 297Q343 388 343 464Q343 530 308.5 574.5Q274 619 212 619Q154 619 118 567Q116 563 112 556Q109 551 109 550Q109 549 114 549Q139 549 154.5 531Q170 513 170 489Q170 464 153.5 446.5Q137 429 110 429Z" />
+    <path id="label-roman-20" d="M416 0Q399 3 257 3Q117 3 100 0H88V46H114Q172 46 189 49Q197 50 213 61V578Q211 578 205 575Q159 557 102 556H83V602H102Q186 605 242 640Q260 650 273 663Q275 666 285 666Q295 666 302 660V361L303 61Q318 46 368 46H401H427V0Z" />
+    <path id="label-text-384" d="M180 0V1490H690Q864 1490 976.5 1430.5Q1089 1371 1143.5 1267Q1198 1163 1198 1030Q1198 897 1143.5 795Q1089 693 977 635.5Q865 578 691 578H286V747H682Q800 747 871.5 781.5Q943 816 976 879.5Q1009 943 1009 1030Q1009 1119 976 1184.5Q943 1250 871 1286.5Q799 1323 680 1323H370V0ZM1036 0 676 671H890L1256 0Z" />
+    <path id="label-text-736" d="M338 1490V0H158V1490Z" />
+    <path id="label-text-913" d="M537 -14Q424 -14 338.5 32.5Q253 79 205.5 173Q158 267 158 408V1118H338V423Q338 294 406 221Q474 148 591 148Q671 148 734.5 183Q798 218 835 285.5Q872 353 872 448V1118H1053V0H879V271H903Q851 114 755.5 50Q660 -14 537 -14Z" />
+    <path id="label-text-888" d="M598 1118V964H20V1118ZM188 1384H368V290Q368 215 398.5 180.5Q429 146 500 146Q517 146 543.5 150Q570 154 592 158L629 6Q601 -4 565.5 -9Q530 -14 495 -14Q350 -14 269 62.5Q188 139 188 276Z" />
+    <path id="label-text-1747" d="" />
+    <path id="label-text-1340" d="M653 1490V0H466V1314H456L96 1047V1251L420 1490Z" />
+    <path id="label-math-31" d="M287 628Q287 629 286 630.5Q285 632 283 632.5Q281 633 279 634Q277 635 273 635.5Q269 636 266 636Q263 636 258 636Q253 636 249.5 636.5Q246 637 240 637Q234 637 230 637Q206 637 201 638Q196 639 194 644Q192 647 195 662Q200 680 204 682Q206 683 378 683Q550 682 564 680Q655 667 702 618Q739 578 739 529Q739 519 735 499Q712 410 588 355Q544 338 538 338L545 333Q612 295 612 223Q612 211 607 159Q602 111 602 80Q602 45 609 30.5Q616 16 640 16Q654 16 658 18Q696 33 712 85Q717 99 720 102Q723 105 735 105Q755 105 755 93Q755 75 731 36Q701 -8 661 -19Q653 -21 632 -21Q528 -21 497 42Q488 58 487 82Q487 93 487.5 99.5Q488 106 489 114Q490 122 491 126Q492 130 496 143Q500 156 502 166Q517 223 517 239Q517 289 474 313Q459 320 449 321Q439 322 378 323H309L277 193Q244 61 244 59Q244 52 247 51Q254 48 302 46H333Q338 39 338.5 37.5Q339 36 336 19Q332 6 326 0H311Q275 2 180 2Q156 2 113 1.5Q70 1 50 1Q33 1 33 9Q33 10 34.5 15Q36 20 36 24Q36 25 37 28Q42 44 48 45Q51 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339Q287 613 287 628ZM614 602Q593 624 559 630.5Q525 637 462 637Q450 637 437 636.5Q424 636 414.5 636Q405 636 404 636Q391 635 386 627Q385 624 352 493.5Q319 363 319 361Q319 360 388 360Q466 361 492 367Q557 378 592 426Q608 449 619 486.5Q630 524 630 554Q630 585 614 602Z" />
+    <path id="label-roman-3" d="" />
+    <path id="label-roman-32" d="M56 347Q56 360 70 367H707Q722 360 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q709 172 712.5 169.5Q716 167 717.5 165.5Q719 164 720.5 160.5Q722 157 722 153Q722 140 707 133H70Q56 140 56 153Z" />
+    <path id="label-roman-19" d="M96 585Q152 666 249 666Q322 666 377 616Q404 590 423 548Q460 465 460 320Q460 165 417 83Q389 25 335 -1Q293 -22 250 -22Q135 -22 82 83Q39 165 39 320Q39 413 51.5 473.5Q64 534 96 585ZM321 597Q292 629 250 629Q208 629 178 597Q156 574 148 541Q140 508 138 427Q138 421 137.5 388Q137 355 137 333Q137 237 139 199Q143 129 151 98.5Q159 68 181 46Q208 16 250 16Q291 16 318 46Q340 68 348 98.5Q356 129 360 199Q362 237 362 333Q362 355 361.5 388Q361 421 361 427Q359 508 351 541Q343 574 321 597Z" />
+    <path id="label-roman-17" d="M139 0Q113 0 95.5 18Q78 36 78 60Q78 82 91.5 98Q105 114 125 119Q138 123 152 119Q172 115 185.5 98Q199 81 199 61Q199 35 181 17.5Q163 0 139 0Z" />
+    <path id="label-roman-24" d="M107 214Q131 214 147.5 197.5Q164 181 164 156Q164 133 147 117Q130 101 109 101H102L105 96Q120 64 151 43Q182 22 224 22Q295 22 326 82Q345 119 345 210Q345 313 318 349Q292 382 254 382Q176 382 136 314Q132 307 128.5 305.5Q125 304 114 304Q97 304 95 310Q93 314 93 485Q93 515 92.5 556Q92 597 92 608Q92 664 98 664Q100 666 102 666L120 660Q185 634 253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q329 538 205 538Q174 538 149 544L139 546V374Q196 420 256 420Q275 420 297 415Q364 398 406.5 339Q449 280 449 201Q449 110 385.5 44Q322 -22 229 -22Q166 -22 122 13Q103 25 89 46Q50 93 50 154Q50 182 66 198Q82 214 107 214Z" />
+    <path id="label-roman-14" d="M70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250Q722 238 707 230H409V-68Q402 -82 389 -82Q376 -82 369 -68V230H70Q56 237 56 250Q56 263 70 270Z" />
+    <path id="label-roman-27" d="M172 335Q123 367 96.5 402Q70 437 70 494Q70 537 86 566Q108 611 150.5 638.5Q193 666 248 666Q316 666 366 630.5Q416 595 428 539Q429 533 429 515Q429 493 427 485Q412 419 336 371Q334 370 330.5 368Q327 366 326 364L324 363Q380 325 382 323Q457 263 457 174Q457 93 397.5 35.5Q338 -22 249 -22Q126 -22 68 68Q43 104 43 155Q43 178 45 186Q60 262 141 316Q147 320 159 327Q171 334 172 335ZM371 513Q371 556 343 586Q315 616 275 624Q268 625 242 625Q189 625 153 589Q128 566 128 534Q128 491 164 466Q169 461 228 424L286 386Q287 387 299 394.5Q311 402 317 408Q371 451 371 513ZM107 157Q107 98 150 59.5Q193 21 250 21Q291 21 324.5 38Q358 55 375 82Q392 108 392 137Q392 180 357 213Q349 221 274 270Q260 279 243.5 289.5Q227 300 218 306L210 311L198 305Q135 264 115 205Q107 179 107 157Z" />
+    <path id="label-math-57" d="M108 -11Q94 -11 84 -3.5Q74 4 74 17Q74 30 114 189Q154 348 154 366Q154 405 128 405Q117 405 109 398Q85 379 61 287Q61 286 60 283.5Q59 281 58.5 280.5Q58 280 57 279Q56 278 53.5 278Q51 278 49 278Q47 278 41 278H27Q21 284 21 287Q21 295 34 334Q53 392 79 418Q103 442 132 442Q171 442 196 423Q218 406 225 388Q227 382 228 381.5Q229 381 236 389Q273 430 321 440Q327 441 347 441Q384 441 407 420Q430 399 430 363Q430 331 412.5 309.5Q395 288 366 288Q347 288 334.5 299Q322 310 322 328Q322 377 378 392Q356 405 342 405Q321 405 302 395Q269 379 239 331Q229 315 224 298Q219 281 190 165Q156 25 151 16Q138 -11 108 -11Z" />
+    <path id="label-roman-249" d="M139 190Q113 190 95.5 208Q78 226 78 250Q78 272 91.5 288Q105 304 125 309Q138 313 152 309Q172 305 185.5 288Q199 271 199 251Q199 225 181 207.5Q163 190 139 190ZM586 190Q560 190 542.5 208Q525 226 525 250Q525 272 538.5 288Q552 304 572 309Q585 313 599 309Q619 305 632.5 288Q646 271 646 251Q646 225 628 207.5Q610 190 586 190ZM1033 190Q1007 190 989.5 208Q972 226 972 250Q972 272 985.5 288Q999 304 1019 309Q1032 313 1046 309Q1066 305 1079.5 288Q1093 271 1093 251Q1093 225 1075 207.5Q1057 190 1033 190Z" />
+    <path id="label-text-852" d="M158 0V1118H332V946H344Q375 1031 454.5 1082.5Q534 1134 634 1134Q654 1134 681.5 1133Q709 1132 725 1131V950Q717 952 685 956Q653 960 617 960Q537 960 473.5 926.5Q410 893 374 834.5Q338 776 338 700V0Z" />
+    <path id="label-text-982" d="M409 0 70 1118H261L397 630Q425 530 457 403.5Q489 277 520 117H489Q519 270 550 397Q581 524 610 630L744 1118H936L1068 630Q1096 527 1126.5 400.5Q1157 274 1187 117H1155Q1187 272 1218.5 398.5Q1250 525 1279 630L1415 1118H1606L1267 0H1088L943 506Q921 583 900 663Q879 743 859 827Q839 911 818 998H858Q838 912 817.5 827.5Q797 743 776 662Q755 581 733 506L588 0Z" />
+    <path id="label-text-507" d="M471 -26Q365 -26 278.5 14Q192 54 141 131Q90 208 90 318Q90 414 128 474Q166 534 229.5 568.5Q293 603 370 620Q447 637 525 647Q625 660 688 667Q751 674 781.5 691Q812 708 812 749V755Q812 825 786 873.5Q760 922 708 948Q656 974 578 974Q498 974 441 949Q384 924 348.5 886.5Q313 849 295 810L122 867Q165 969 238 1026.5Q311 1084 399 1108Q487 1132 573 1132Q629 1132 700.5 1118.5Q772 1105 838.5 1065Q905 1025 948.5 946.5Q992 868 992 737V0H815V152H803Q784 113 742 71.5Q700 30 633 2Q566 -26 471 -26ZM502 133Q602 133 671 172Q740 211 776 273.5Q812 336 812 404V559Q801 546 764 535.5Q727 525 679.5 517Q632 509 587.5 503.5Q543 498 517 495Q452 487 395.5 467.5Q339 448 305 410.5Q271 373 271 309Q271 251 301 212Q331 173 383 153Q435 133 502 133Z" />
+    <path id="label-text-597" d="M577 -24Q438 -24 331 47Q224 118 164 248Q104 378 104 556Q104 733 164.5 862.5Q225 992 332 1062Q439 1132 578 1132Q687 1132 751 1096Q815 1060 849.5 1014.5Q884 969 902 939H916V1490H1096V0H922V173H902Q884 142 848.5 95.5Q813 49 748.5 12.5Q684 -24 577 -24ZM604 137Q706 137 776 190.5Q846 244 882 339Q918 434 918 558Q918 682 882.5 774.5Q847 867 777 919Q707 971 604 971Q498 971 427.5 916Q357 861 322 767.5Q287 674 287 558Q287 441 322.5 345.5Q358 250 429 193.5Q500 137 604 137Z" />
+    <path id="label-text-978" d="M481 0 54 1118H251L489 455Q527 352 553.5 249.5Q580 147 609 51H543Q572 147 598.5 249.5Q625 352 662 455L900 1118H1097L670 0Z" />
+    <path id="label-text-658" d="M611 -442Q487 -442 396.5 -410.5Q306 -379 246 -327Q186 -275 151 -214L297 -120Q321 -152 356.5 -191Q392 -230 452.5 -257.5Q513 -285 611 -285Q745 -285 831.5 -221Q918 -157 918 -19V205H901Q882 173 847.5 129Q813 85 748.5 51.5Q684 18 576 18Q442 18 335 81.5Q228 145 166 267Q104 389 104 564Q104 737 165 864.5Q226 992 333.5 1062Q441 1132 580 1132Q688 1132 752.5 1096.5Q817 1061 852 1015Q887 969 906 939H923V1118H1098V-29Q1098 -173 1033 -264.5Q968 -356 857.5 -399Q747 -442 611 -442ZM606 178Q708 178 778 224.5Q848 271 884 358.5Q920 446 920 568Q920 687 884.5 777.5Q849 868 779 919.5Q709 971 606 971Q500 971 429 916.5Q358 862 322.5 771Q287 680 287 568Q287 453 323 365Q359 277 430 227.5Q501 178 606 178Z" />
+    <path id="label-text-689" d="M158 0V1118H338V0ZM249 1301Q198 1301 161 1336Q124 1371 124 1420Q124 1470 161 1504.5Q198 1539 249 1539Q301 1539 338 1504.5Q375 1470 375 1420Q375 1371 338 1336Q301 1301 249 1301Z" />
+    <path id="label-text-1341" d="M154 0V137L649 674Q732 764 787 832Q842 900 870 961.5Q898 1023 898 1092Q898 1170 861 1227Q824 1284 761 1314.5Q698 1345 618 1345Q533 1345 470.5 1310.5Q408 1276 374 1213.5Q340 1151 340 1067H158Q158 1199 219 1299Q280 1399 385 1454.5Q490 1510 623 1510Q756 1510 858.5 1454.5Q961 1399 1019.5 1305Q1078 1211 1078 1094Q1078 1013 1049 936.5Q1020 860 947 763Q874 666 742 526L416 179V167H1103V0Z" />
+    <path id="label-text-65" d="M180 0V1490H708Q864 1490 965.5 1436.5Q1067 1383 1116.5 1293.5Q1166 1204 1166 1095Q1166 999 1132 936.5Q1098 874 1042.5 837Q987 800 922 782V768Q992 764 1061.5 720Q1131 676 1177.5 595Q1224 514 1224 397Q1224 285 1172.5 195Q1121 105 1011 52.5Q901 0 725 0ZM370 168H720Q894 168 967.5 235Q1041 302 1041 399Q1041 474 1003 537Q965 600 895.5 638Q826 676 730 676H370ZM370 836H698Q778 836 843 867.5Q908 899 946 956.5Q984 1014 984 1091Q984 1188 916.5 1255Q849 1322 704 1322H370Z" />
+    <path id="label-math-41" d="M89 683Q90 683 161.5 688.5Q233 694 234 694Q246 694 246 685Q246 677 211 538.5Q176 400 176 399Q176 396 182 402Q216 430 258 440Q270 442 283 442Q296 442 308 440Q360 428 391 386Q422 344 422 280Q422 168 343.5 78.5Q265 -11 173 -11Q144 -11 118 2Q40 37 40 150Q40 179 46 207Q46 208 96 412L147 616Q149 630 140.5 633.5Q132 637 112 637Q105 637 101 637Q80 637 77 640Q71 645 76 664Q80 678 83 680Q86 683 89 683ZM336 325Q336 405 275 405Q273 405 268.5 404.5Q264 404 263 404Q211 393 165 332Q163 330 160 326L157 322Q157 321 139.5 250.5Q122 180 120 170Q114 139 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285.5 114.5Q301 148 318 219Q336 291 336 325Z" />
+  </defs>
+  <!-- Text outlines: Inter Regular 400 and the article’s KaTeX 0.16.11 fonts. Original labels remain in aria-label attributes. -->
+  <rect x="24" y="25" width="481" height="486" fill="#fff" fill-opacity="0.46" />
+  <rect x="24" y="25" width="481" height="60" fill="#315d68" fill-opacity="0.09" />
+  <line x1="24" y1="25" x2="505" y2="25" stroke="#b6cace" stroke-width="1.7" stroke-linecap="round" />
+  <rect x="525" y="25" width="500" height="486" fill="#fff" fill-opacity="0.46" />
+  <rect x="525" y="25" width="500" height="60" fill="#315d68" fill-opacity="0.09" />
+  <line x1="525" y1="25" x2="1025" y2="25" stroke="#b6cace" stroke-width="1.7" stroke-linecap="round" />
+  <rect x="1045" y="25" width="531" height="486" fill="#fff" fill-opacity="0.46" />
+  <rect x="1045" y="25" width="531" height="60" fill="#315d68" fill-opacity="0.09" />
+  <line x1="1045" y1="25" x2="1576" y2="25" stroke="#b6cace" stroke-width="1.7" stroke-linecap="round" />
+  <rect x="24" y="298" width="1552" height="71" fill="#8a7250" fill-opacity="0.10" />
+  <g fill="#57666b" aria-label="Tokens" data-font-family="Inter" transform="translate(36 64)">
+    <use href="#label-text-411" transform="translate(0 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-790" transform="translate(15.8867 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-727" transform="translate(32.6758 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-614" transform="translate(47.4141 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-773" transform="translate(63.7383 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-871" transform="translate(80.2812 0) scale(0.0137 -0.0137)" />
+  </g>
+  <line x1="352" y1="55" x2="735" y2="55" stroke="#c0d0d3" stroke-width="1.2" stroke-linecap="round" marker-end="url(#guide)" />
+  <line x1="872" y1="55" x2="1255" y2="55" stroke="#c0d0d3" stroke-width="1.2" stroke-linecap="round" marker-end="url(#guide)" />
+  <g fill="#234a54" aria-label="𝑦𝐿−2" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(249.4687 67)">
+    <use href="#label-math-64" transform="translate(0 0) scale(0.039 -0.039)" />
+    <use href="#label-math-25" transform="translate(19.11 8) scale(0.0265 -0.0265)" />
+    <use href="#label-roman-193" transform="translate(37.1701 8) scale(0.0265 -0.0265)" />
+    <use href="#label-roman-21" transform="translate(57.8027 8) scale(0.0265 -0.0265)" />
+  </g>
+  <g fill="#234a54" aria-label="𝑦𝐿−1" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(769.4687 67)">
+    <use href="#label-math-64" transform="translate(0 0) scale(0.039 -0.039)" />
+    <use href="#label-math-25" transform="translate(19.11 8) scale(0.0265 -0.0265)" />
+    <use href="#label-roman-193" transform="translate(37.1701 8) scale(0.0265 -0.0265)" />
+    <use href="#label-roman-20" transform="translate(57.8027 8) scale(0.0265 -0.0265)" />
+  </g>
+  <g fill="#234a54" aria-label="𝑦𝐿" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(1306.4149 67)">
+    <use href="#label-math-64" transform="translate(0 0) scale(0.039 -0.039)" />
+    <use href="#label-math-25" transform="translate(19.11 8) scale(0.0265 -0.0265)" />
+  </g>
+  <g fill="#3f5962" aria-label="Rollout 1" data-font-family="Inter" transform="translate(42 168)">
+    <use href="#label-text-384" transform="translate(0 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-790" transform="translate(17.6094 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-736" transform="translate(34.3984 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-736" transform="translate(41.1797 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-790" transform="translate(47.9609 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-913" transform="translate(64.75 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-888" transform="translate(81.3066 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-1747" transform="translate(90.4668 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-1340" transform="translate(98.3418 0) scale(0.0137 -0.0137)" />
+  </g>
+  <g fill="#28363b" aria-label="𝑅 = 1" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(1434.26 228)">
+    <use href="#label-math-31" transform="translate(0 0) scale(0.04 -0.04)" />
+    <use href="#label-roman-3" transform="translate(30.36 0) scale(0.04 -0.04)" />
+    <use href="#label-roman-32" transform="translate(40.36 0) scale(0.04 -0.04)" />
+    <use href="#label-roman-3" transform="translate(71.48 0) scale(0.04 -0.04)" />
+    <use href="#label-roman-20" transform="translate(81.48 0) scale(0.04 -0.04)" />
+  </g>
+  <g fill="#267182" aria-label="0.5" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(1181.162 228)">
+    <use href="#label-roman-19" transform="translate(0 0) scale(0.042 -0.042)" />
+    <use href="#label-roman-17" transform="translate(21 0) scale(0.042 -0.042)" />
+    <use href="#label-roman-24" transform="translate(32.676 0) scale(0.042 -0.042)" />
+  </g>
+  <g fill="#28363b" aria-label="1.0" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(944.44 228)">
+    <use href="#label-roman-20" transform="translate(0 0) scale(0.04 -0.04)" />
+    <use href="#label-roman-17" transform="translate(20 0) scale(0.04 -0.04)" />
+    <use href="#label-roman-19" transform="translate(31.12 0) scale(0.04 -0.04)" />
+  </g>
+  <g fill="#267182" aria-label="+0.8" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(640.40992 229.04000) scale(1.08)">
+    <use href="#label-roman-14" transform="translate(0 0) scale(0.042 -0.042)" />
+    <use href="#label-roman-19" transform="translate(32.676 0) scale(0.042 -0.042)" />
+    <use href="#label-roman-17" transform="translate(53.676 0) scale(0.042 -0.042)" />
+    <use href="#label-roman-27" transform="translate(65.352 0) scale(0.042 -0.042)" />
+  </g>
+  <g fill="#28363b" aria-label="0.8 𝑟𝐿−1" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(370.3665 228)">
+    <use href="#label-roman-19" transform="translate(0 0) scale(0.033 -0.033)" />
+    <use href="#label-roman-17" transform="translate(16.5 0) scale(0.033 -0.033)" />
+    <use href="#label-roman-27" transform="translate(25.674 0) scale(0.033 -0.033)" />
+    <use href="#label-roman-3" transform="translate(42.174 0) scale(0.033 -0.033)" />
+    <use href="#label-math-57" transform="translate(50.424 0) scale(0.033 -0.033)" />
+    <use href="#label-math-25" transform="translate(65.307 8) scale(0.0224 -0.0224)" />
+    <use href="#label-roman-193" transform="translate(80.5886 8) scale(0.0224 -0.0224)" />
+    <use href="#label-roman-20" transform="translate(98.047 8) scale(0.0224 -0.0224)" />
+  </g>
+  <g fill="#28363b" aria-label="⋯" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(89.146 228)">
+    <use href="#label-roman-249" transform="translate(0 0) scale(0.039 -0.039)" />
+  </g>
+  <g fill="#657177" aria-label="reward" data-font-family="Inter" transform="translate(1439.124 181)">
+    <use href="#label-text-852" transform="translate(0 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-614" transform="translate(10.0762 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-982" transform="translate(25.8945 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-507" transform="translate(48.8086 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-852" transform="translate(64.5312 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-597" transform="translate(74.6074 0) scale(0.0137 -0.0137)" />
+  </g>
+  <g fill="#657177" aria-label="advantage" data-font-family="Inter" transform="translate(1138.3076 263)">
+    <use href="#label-text-507" transform="translate(0 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-597" transform="translate(15.7227 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-978" transform="translate(33.0039 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-507" transform="translate(48.6035 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-773" transform="translate(64.3262 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-888" transform="translate(80.8691 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-507" transform="translate(90.166 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-658" transform="translate(105.8887 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-614" transform="translate(123.0605 0) scale(0.0137 -0.0137)" />
+  </g>
+  <g fill="#657177" aria-label="advantage" data-font-family="Inter" transform="translate(618.3076 263)">
+    <use href="#label-text-507" transform="translate(0 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-597" transform="translate(15.7227 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-978" transform="translate(33.0039 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-507" transform="translate(48.6035 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-773" transform="translate(64.3262 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-888" transform="translate(80.8691 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-507" transform="translate(90.166 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-658" transform="translate(105.8887 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-614" transform="translate(123.0605 0) scale(0.0137 -0.0137)" />
+  </g>
+  <line x1="1423" y1="216" x2="1351" y2="216" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" />
+  <line x1="1299" y1="216" x2="1250" y2="216" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" marker-end="url(#flow)" />
+  <line x1="1166" y1="216" x2="1111" y2="216" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" />
+  <line x1="1059" y1="216" x2="1012" y2="216" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" marker-end="url(#flow)" />
+  <line x1="928" y1="216" x2="831" y2="216" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" />
+  <line x1="779" y1="216" x2="748" y2="216" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" marker-end="url(#flow)" />
+  <line x1="628" y1="216" x2="591" y2="216" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" />
+  <line x1="539" y1="216" x2="506" y2="216" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" marker-end="url(#flow)" />
+  <line x1="344" y1="216" x2="311" y2="216" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" />
+  <line x1="259" y1="216" x2="147" y2="216" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" marker-end="url(#flow)" />
+  <circle cx="285" cy="216" r="21" fill="#fbfaf7" stroke="#63747b" stroke-width="1.55" />
+  <line x1="277.5" y1="216" x2="292.5" y2="216" stroke="#28363b" stroke-width="1.65" stroke-linecap="round" />
+  <circle cx="805" cy="216" r="21" fill="#fbfaf7" stroke="#63747b" stroke-width="1.55" />
+  <line x1="797.5" y1="216" x2="812.5" y2="216" stroke="#28363b" stroke-width="1.65" stroke-linecap="round" />
+  <circle cx="1325" cy="216" r="21" fill="#fbfaf7" stroke="#63747b" stroke-width="1.55" />
+  <line x1="1317.5" y1="216" x2="1332.5" y2="216" stroke="#28363b" stroke-width="1.65" stroke-linecap="round" />
+  <circle cx="565" cy="216" r="21" fill="#e1eaeb" stroke="#63747b" stroke-width="1.55" />
+  <line x1="559.3" y1="210.3" x2="570.7" y2="221.7" stroke="#28363b" stroke-width="1.65" stroke-linecap="round" />
+  <line x1="559.3" y1="221.7" x2="570.7" y2="210.3" stroke="#28363b" stroke-width="1.65" stroke-linecap="round" />
+  <g fill="#657177" aria-label="ratio" data-font-family="Inter" transform="translate(535.5029 140)">
+    <use href="#label-text-852" transform="translate(0 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-507" transform="translate(10.541 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-888" transform="translate(26.2637 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-689" transform="translate(35.4238 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-790" transform="translate(42.2051 0) scale(0.0137 -0.0137)" />
+  </g>
+  <g fill="#28363b" aria-label="𝑟𝐿−1" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(533.7954 177)">
+    <use href="#label-math-57" transform="translate(0 0) scale(0.035 -0.035)" />
+    <use href="#label-math-25" transform="translate(15.785 8) scale(0.0238 -0.0238)" />
+    <use href="#label-roman-193" transform="translate(31.9928 8) scale(0.0238 -0.0238)" />
+    <use href="#label-roman-20" transform="translate(50.5092 8) scale(0.0238 -0.0238)" />
+  </g>
+  <line x1="565" y1="188" x2="565" y2="194" stroke="#bcc7ca" stroke-width="1.2" stroke-linecap="round" />
+  <circle cx="1085" cy="216" r="21" fill="#e1eaeb" stroke="#63747b" stroke-width="1.55" />
+  <line x1="1079.3" y1="210.3" x2="1090.7" y2="221.7" stroke="#28363b" stroke-width="1.65" stroke-linecap="round" />
+  <line x1="1079.3" y1="221.7" x2="1090.7" y2="210.3" stroke="#28363b" stroke-width="1.65" stroke-linecap="round" />
+  <g fill="#657177" aria-label="ratio" data-font-family="Inter" transform="translate(1055.5029 140)">
+    <use href="#label-text-852" transform="translate(0 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-507" transform="translate(10.541 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-888" transform="translate(26.2637 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-689" transform="translate(35.4238 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-790" transform="translate(42.2051 0) scale(0.0137 -0.0137)" />
+  </g>
+  <g fill="#28363b" aria-label="𝑟𝐿 = 2" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(1037.8886 177)">
+    <use href="#label-math-57" transform="translate(0 0) scale(0.035 -0.035)" />
+    <use href="#label-math-25" transform="translate(15.785 8) scale(0.0238 -0.0238)" />
+    <use href="#label-roman-3" transform="translate(31.9928 0) scale(0.035 -0.035)" />
+    <use href="#label-roman-32" transform="translate(40.7428 0) scale(0.035 -0.035)" />
+    <use href="#label-roman-3" transform="translate(67.9728 0) scale(0.035 -0.035)" />
+    <use href="#label-roman-21" transform="translate(76.7228 0) scale(0.035 -0.035)" />
+  </g>
+  <line x1="1085" y1="188" x2="1085" y2="194" stroke="#bcc7ca" stroke-width="1.2" stroke-linecap="round" />
+  <g fill="#3f5962" aria-label="Rollout 2" data-font-family="Inter" transform="translate(42 405)">
+    <use href="#label-text-384" transform="translate(0 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-790" transform="translate(17.6094 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-736" transform="translate(34.3984 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-736" transform="translate(41.1797 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-790" transform="translate(47.9609 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-913" transform="translate(64.75 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-888" transform="translate(81.3066 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-1747" transform="translate(90.4668 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-1341" transform="translate(98.3418 0) scale(0.0137 -0.0137)" />
+  </g>
+  <g fill="#28363b" aria-label="𝑅 = 1" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(1434.26 465)">
+    <use href="#label-math-31" transform="translate(0 0) scale(0.04 -0.04)" />
+    <use href="#label-roman-3" transform="translate(30.36 0) scale(0.04 -0.04)" />
+    <use href="#label-roman-32" transform="translate(40.36 0) scale(0.04 -0.04)" />
+    <use href="#label-roman-3" transform="translate(71.48 0) scale(0.04 -0.04)" />
+    <use href="#label-roman-20" transform="translate(81.48 0) scale(0.04 -0.04)" />
+  </g>
+  <g fill="#267182" aria-label="0.5" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(1181.162 465)">
+    <use href="#label-roman-19" transform="translate(0 0) scale(0.042 -0.042)" />
+    <use href="#label-roman-17" transform="translate(21 0) scale(0.042 -0.042)" />
+    <use href="#label-roman-24" transform="translate(32.676 0) scale(0.042 -0.042)" />
+  </g>
+  <g fill="#28363b" aria-label="0.1" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(944.44 465)">
+    <use href="#label-roman-19" transform="translate(0 0) scale(0.04 -0.04)" />
+    <use href="#label-roman-17" transform="translate(20 0) scale(0.04 -0.04)" />
+    <use href="#label-roman-20" transform="translate(31.12 0) scale(0.04 -0.04)" />
+  </g>
+  <g fill="#b25c42" aria-label="−0.1" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(640.40992 466.04000) scale(1.08)">
+    <use href="#label-roman-193" transform="translate(0 0) scale(0.042 -0.042)" />
+    <use href="#label-roman-19" transform="translate(32.676 0) scale(0.042 -0.042)" />
+    <use href="#label-roman-17" transform="translate(53.676 0) scale(0.042 -0.042)" />
+    <use href="#label-roman-20" transform="translate(65.352 0) scale(0.042 -0.042)" />
+  </g>
+  <g fill="#28363b" aria-label="−0.1 𝑟𝐿−1" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(357.5295 465)">
+    <use href="#label-roman-193" transform="translate(0 0) scale(0.033 -0.033)" />
+    <use href="#label-roman-19" transform="translate(25.674 0) scale(0.033 -0.033)" />
+    <use href="#label-roman-17" transform="translate(42.174 0) scale(0.033 -0.033)" />
+    <use href="#label-roman-20" transform="translate(51.348 0) scale(0.033 -0.033)" />
+    <use href="#label-roman-3" transform="translate(67.848 0) scale(0.033 -0.033)" />
+    <use href="#label-math-57" transform="translate(76.098 0) scale(0.033 -0.033)" />
+    <use href="#label-math-25" transform="translate(90.981 8) scale(0.0224 -0.0224)" />
+    <use href="#label-roman-193" transform="translate(106.2626 8) scale(0.0224 -0.0224)" />
+    <use href="#label-roman-20" transform="translate(123.721 8) scale(0.0224 -0.0224)" />
+  </g>
+  <g fill="#28363b" aria-label="⋯" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(89.146 465)">
+    <use href="#label-roman-249" transform="translate(0 0) scale(0.039 -0.039)" />
+  </g>
+  <line x1="1423" y1="453" x2="1351" y2="453" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" />
+  <line x1="1299" y1="453" x2="1250" y2="453" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" marker-end="url(#flow)" />
+  <line x1="1166" y1="453" x2="1111" y2="453" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" />
+  <line x1="1059" y1="453" x2="1012" y2="453" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" marker-end="url(#flow)" />
+  <line x1="928" y1="453" x2="831" y2="453" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" />
+  <line x1="779" y1="453" x2="748" y2="453" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" marker-end="url(#flow)" />
+  <line x1="628" y1="453" x2="591" y2="453" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" />
+  <line x1="539" y1="453" x2="506" y2="453" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" marker-end="url(#flow)" />
+  <line x1="344" y1="453" x2="311" y2="453" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" />
+  <line x1="259" y1="453" x2="147" y2="453" stroke="#63747b" stroke-width="1.55" stroke-linecap="round" marker-end="url(#flow)" />
+  <circle cx="285" cy="453" r="21" fill="#fbfaf7" stroke="#63747b" stroke-width="1.55" />
+  <line x1="277.5" y1="453" x2="292.5" y2="453" stroke="#28363b" stroke-width="1.65" stroke-linecap="round" />
+  <circle cx="805" cy="453" r="21" fill="#fbfaf7" stroke="#63747b" stroke-width="1.55" />
+  <line x1="797.5" y1="453" x2="812.5" y2="453" stroke="#28363b" stroke-width="1.65" stroke-linecap="round" />
+  <circle cx="1325" cy="453" r="21" fill="#fbfaf7" stroke="#63747b" stroke-width="1.55" />
+  <line x1="1317.5" y1="453" x2="1332.5" y2="453" stroke="#28363b" stroke-width="1.65" stroke-linecap="round" />
+  <circle cx="565" cy="453" r="21" fill="#e1eaeb" stroke="#63747b" stroke-width="1.55" />
+  <line x1="559.3" y1="447.3" x2="570.7" y2="458.7" stroke="#28363b" stroke-width="1.65" stroke-linecap="round" />
+  <line x1="559.3" y1="458.7" x2="570.7" y2="447.3" stroke="#28363b" stroke-width="1.65" stroke-linecap="round" />
+  <g fill="#28363b" aria-label="𝑟𝐿−1" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(533.7954 414)">
+    <use href="#label-math-57" transform="translate(0 0) scale(0.035 -0.035)" />
+    <use href="#label-math-25" transform="translate(15.785 8) scale(0.0238 -0.0238)" />
+    <use href="#label-roman-193" transform="translate(31.9928 8) scale(0.0238 -0.0238)" />
+    <use href="#label-roman-20" transform="translate(50.5092 8) scale(0.0238 -0.0238)" />
+  </g>
+  <line x1="565" y1="425" x2="565" y2="431" stroke="#bcc7ca" stroke-width="1.2" stroke-linecap="round" />
+  <circle cx="1085" cy="453" r="21" fill="#e1eaeb" stroke="#63747b" stroke-width="1.55" />
+  <line x1="1079.3" y1="447.3" x2="1090.7" y2="458.7" stroke="#28363b" stroke-width="1.65" stroke-linecap="round" />
+  <line x1="1079.3" y1="458.7" x2="1090.7" y2="447.3" stroke="#28363b" stroke-width="1.65" stroke-linecap="round" />
+  <g fill="#28363b" aria-label="𝑟𝐿 = 0.2" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(1024.2736 414)">
+    <use href="#label-math-57" transform="translate(0 0) scale(0.035 -0.035)" />
+    <use href="#label-math-25" transform="translate(15.785 8) scale(0.0238 -0.0238)" />
+    <use href="#label-roman-3" transform="translate(31.9928 0) scale(0.035 -0.035)" />
+    <use href="#label-roman-32" transform="translate(40.7428 0) scale(0.035 -0.035)" />
+    <use href="#label-roman-3" transform="translate(67.9728 0) scale(0.035 -0.035)" />
+    <use href="#label-roman-19" transform="translate(76.7228 0) scale(0.035 -0.035)" />
+    <use href="#label-roman-17" transform="translate(94.2228 0) scale(0.035 -0.035)" />
+    <use href="#label-roman-21" transform="translate(103.9528 0) scale(0.035 -0.035)" />
+  </g>
+  <line x1="1085" y1="425" x2="1085" y2="431" stroke="#bcc7ca" stroke-width="1.2" stroke-linecap="round" />
+  <g fill="#746753" aria-label="Baselines" data-font-family="Inter" transform="translate(42 343)">
+    <use href="#label-text-65" transform="translate(0 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-507" transform="translate(18.3203 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-871" transform="translate(34.043 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-614" transform="translate(48.8223 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-736" transform="translate(65.1465 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-689" transform="translate(71.9277 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-773" transform="translate(78.709 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-614" transform="translate(95.252 0) scale(0.0137 -0.0137)" />
+    <use href="#label-text-871" transform="translate(111.5762 0) scale(0.0137 -0.0137)" />
+  </g>
+  <g fill="#675c4c" aria-label="𝑏𝐿−2" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(252.4193 344)">
+    <use href="#label-math-41" transform="translate(0 0) scale(0.037 -0.037)" />
+    <use href="#label-math-25" transform="translate(15.873 8) scale(0.0252 -0.0252)" />
+    <use href="#label-roman-193" transform="translate(33.007 8) scale(0.0252 -0.0252)" />
+    <use href="#label-roman-21" transform="translate(52.5814 8) scale(0.0252 -0.0252)" />
+  </g>
+  <line x1="285" y1="301" x2="285" y2="241" stroke="#bdb6aa" stroke-width="1.2" stroke-linecap="round" marker-end="url(#guide)" />
+  <line x1="285" y1="368" x2="285" y2="428" stroke="#bdb6aa" stroke-width="1.2" stroke-linecap="round" marker-end="url(#guide)" />
+  <g fill="#675c4c" aria-label="𝑏𝐿−1 = 0.2" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(725.1333 344)">
+    <use href="#label-math-41" transform="translate(0 0) scale(0.037 -0.037)" />
+    <use href="#label-math-25" transform="translate(15.873 8) scale(0.0252 -0.0252)" />
+    <use href="#label-roman-193" transform="translate(33.007 8) scale(0.0252 -0.0252)" />
+    <use href="#label-roman-20" transform="translate(52.5814 8) scale(0.0252 -0.0252)" />
+    <use href="#label-roman-3" transform="translate(65.1614 0) scale(0.037 -0.037)" />
+    <use href="#label-roman-32" transform="translate(74.4114 0) scale(0.037 -0.037)" />
+    <use href="#label-roman-3" transform="translate(103.1974 0) scale(0.037 -0.037)" />
+    <use href="#label-roman-19" transform="translate(112.4474 0) scale(0.037 -0.037)" />
+    <use href="#label-roman-17" transform="translate(130.9474 0) scale(0.037 -0.037)" />
+    <use href="#label-roman-21" transform="translate(141.2334 0) scale(0.037 -0.037)" />
+  </g>
+  <line x1="805" y1="301" x2="805" y2="241" stroke="#bdb6aa" stroke-width="1.2" stroke-linecap="round" marker-end="url(#guide)" />
+  <line x1="805" y1="368" x2="805" y2="428" stroke="#bdb6aa" stroke-width="1.2" stroke-linecap="round" marker-end="url(#guide)" />
+  <g fill="#675c4c" aria-label="𝑏𝐿 = 0.5" data-font-family="KaTeX_Main / KaTeX_Math" transform="translate(1261.2105 344)">
+    <use href="#label-math-41" transform="translate(0 0) scale(0.037 -0.037)" />
+    <use href="#label-math-25" transform="translate(15.873 8) scale(0.0252 -0.0252)" />
+    <use href="#label-roman-3" transform="translate(33.007 0) scale(0.037 -0.037)" />
+    <use href="#label-roman-32" transform="translate(42.257 0) scale(0.037 -0.037)" />
+    <use href="#label-roman-3" transform="translate(71.043 0) scale(0.037 -0.037)" />
+    <use href="#label-roman-19" transform="translate(80.293 0) scale(0.037 -0.037)" />
+    <use href="#label-roman-17" transform="translate(98.793 0) scale(0.037 -0.037)" />
+    <use href="#label-roman-24" transform="translate(109.079 0) scale(0.037 -0.037)" />
+  </g>
+  <line x1="1325" y1="301" x2="1325" y2="241" stroke="#bdb6aa" stroke-width="1.2" stroke-linecap="round" marker-end="url(#guide)" />
+  <line x1="1325" y1="368" x2="1325" y2="428" stroke="#bdb6aa" stroke-width="1.2" stroke-linecap="round" marker-end="url(#guide)" />
+</svg>
